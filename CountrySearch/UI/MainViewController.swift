@@ -13,10 +13,17 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel: MainViewModelProtocol = MainViewModel()
+    private let cellID = "MainCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     private func setup() {
@@ -31,7 +38,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         
         cell.selectionStyle = .none
         cell.accessoryType = .disclosureIndicator
@@ -43,14 +50,6 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.getRegionData(viewModel.regions[indexPath.row].lowercased()).start { (event) in
-            switch event {
-            case .completed:
-                debugPrint("OK")
-            case .interrupted:
-                debugPrint("LOL")
-            default: break
-            }
-        }
+        viewModel.getRegionData(viewModel.regions[indexPath.row]).start()
     }
 }

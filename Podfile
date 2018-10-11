@@ -6,9 +6,9 @@ target 'CountrySearch' do
   use_frameworks!
 
 	pod 'Moya'
-	pod 'ReactiveCocoa'
-	pod 'Kingfisher' 	
+	pod 'ReactiveCocoa' 	
 	pod 'ObjectMapper'
+	pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
 
 end
 

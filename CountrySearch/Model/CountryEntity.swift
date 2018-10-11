@@ -10,14 +10,15 @@ import ObjectMapper
 
 class CountryEntity: Mappable {
     
-    var name = ""
-    var nativeName = ""
+    var flag        = ""
+    var name        = ""
+    var nativeName  = ""    
     
-    required init?(map: Map) {
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
-        name <- map[MapperKey.name]
-        nativeName <- map[MapperKey.name]
+        flag        <- map[MapperKey.flag]
+        name        <- map[MapperKey.name]
+        nativeName  <- map[MapperKey.nativeName]
     }
 }

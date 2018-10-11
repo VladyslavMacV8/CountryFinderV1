@@ -13,9 +13,12 @@ enum Constants {
 }
 
 enum MapperKey {
-    
     static let status       = "status"
     
+    static let code         = "code"
+    static let message      = "message"
+    
+    static let flag         = "flag"
     static let name         = "name"
     static let nativeName   = "nativeName"
 }

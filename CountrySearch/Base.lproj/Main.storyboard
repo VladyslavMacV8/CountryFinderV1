@@ -58,5 +58,35 @@
             </objects>
             <point key="canvasLocation" x="-650.39999999999998" y="47.290640394088669"/>
         </scene>
+        <!--Countries View Controller-->
+        <scene sceneID="H1R-75-tHK">
+            <objects>
+                <viewController storyboardIdentifier="CountriesViewController" id="kEX-YD-P2B" customClass="CountriesViewController" customModule="CountrySearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ljw-ah-N1f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X34-EZ-QBF">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="X34-EZ-QBF" firstAttribute="leading" secondItem="Mzd-RH-ilU" secondAttribute="leading" id="59m-cR-ttc"/>
+                            <constraint firstItem="Mzd-RH-ilU" firstAttribute="trailing" secondItem="X34-EZ-QBF" secondAttribute="trailing" id="6iK-fl-RgO"/>
+                            <constraint firstItem="X34-EZ-QBF" firstAttribute="top" secondItem="Mzd-RH-ilU" secondAttribute="top" id="JAH-Od-Qjv"/>
+                            <constraint firstItem="Mzd-RH-ilU" firstAttribute="bottom" secondItem="X34-EZ-QBF" secondAttribute="bottom" id="Ogm-OC-gPM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mzd-RH-ilU"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="X34-EZ-QBF" id="fFw-Id-05L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6F3-Qr-6re" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="48"/>
+        </scene>
     </scenes>
 </document>

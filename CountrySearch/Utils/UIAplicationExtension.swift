@@ -30,9 +30,7 @@ extension UIApplication {
     }
     
     class func topNavigationViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        guard let navigation = base as? CustomNavigationController else {
-            return nil
-        }
+        guard let navigation = base as? CustomNavigationController else { return nil }
         return navigation
     }
 }

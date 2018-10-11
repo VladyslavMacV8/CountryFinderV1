@@ -1,6 +1,11 @@
 PODS:
   - Alamofire (4.7.3)
-  - Kingfisher (4.10.0)
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
+    - CocoaLumberjack/Default
   - Moya (11.0.2):
     - Moya/Core (= 11.0.2)
   - Moya/Core (11.0.2):
@@ -12,32 +17,45 @@ PODS:
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
   - Result (3.2.4)
+  - SVGKit (2.0.1):
+    - CocoaLumberjack (~> 3.x)
 
 DEPENDENCIES:
-  - Kingfisher
   - Moya
   - ObjectMapper
   - ReactiveCocoa
+  - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `2.x`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - Kingfisher
+    - CocoaLumberjack
     - Moya
     - ObjectMapper
     - ReactiveCocoa
     - ReactiveSwift
     - Result
 
+EXTERNAL SOURCES:
+  SVGKit:
+    :branch: 2.x
+    :git: https://github.com/SVGKit/SVGKit.git
+
+CHECKOUT OPTIONS:
+  SVGKit:
+    :commit: 733acf66e44a02396efc8a6f445d190af592d544
+    :git: https://github.com/SVGKit/SVGKit.git
+
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SVGKit: 4055d9e809b5db8633755979cfb3b02dc5a8c20d
 
-PODFILE CHECKSUM: 8f52fc8b4f05b392b494222590ff968f29fb84e0
+PODFILE CHECKSUM: 9c490011f32623f408a713d67ce8d99fae1fed2d
 
 COCOAPODS: 1.5.0

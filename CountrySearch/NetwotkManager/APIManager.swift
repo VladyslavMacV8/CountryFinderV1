@@ -90,24 +90,34 @@ let plugins: [PluginType] = [NetworkLoggerPlugin(verbose: true, responseDataForm
 
 let networkProvider = MoyaProvider<ApiManager>(endpointClosure: endpointClosure, plugins: plugins)
 
-func processing(observer: Signal<(), NoError>.Observer, result: Result<Moya.Response, MoyaError>, closure: (([[String: AnyObject]])->())?) {
+func processing(observer: Signal<(), ErrorEntity>.Observer, result: Result<Moya.Response, MoyaError>, closure: ((Any)->())?) {
     switch(result) {
     case let .success(response):
         do {
-            if let arrayJson = try response.mapJSON() as? [[String: AnyObject]] {
-                if let errorStatus = arrayJson.first?[MapperKey.status] as? Int, errorStatus == 404 {
-                    observer.sendInterrupted()
+            
+            let json = try response.mapJSON()
+            
+            if let jsonDict = json as? [String: AnyObject], let errorStatus = jsonDict[MapperKey.status] as? Int, errorStatus == 404 {
+                
+                let presenter: Presenter = PresenterImpl()
+                if errorStatus == 404 {
+                    let alert = showCustomError(error: ErrorEntity.notFound)
+                    presenter.openAlertVCForError(alert)
                 } else {
-                    closure?(arrayJson)
-                    observer.sendCompleted()
+                    let alert = showCustomError(error: ErrorEntity.otherError("Unknown Error"))
+                    presenter.openAlertVCForError(alert)
                 }
+                
+                observer.send(error: ErrorEntity.createEntity(jsonDict, "Unknown Error"))
             } else {
-                observer.sendInterrupted()
+                closure?(json)
+                observer.sendCompleted()
             }
+            
         } catch {
-            observer.sendInterrupted()
+            observer.send(error: ErrorEntity.otherError("Error with casting to \"Any\""))
         }
-    case .failure(_):
-        observer.sendInterrupted()
+    case .failure(let error):
+        observer.send(error: ErrorEntity.otherError(error.localizedDescription))
     }
 }

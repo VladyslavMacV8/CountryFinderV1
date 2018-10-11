@@ -13,20 +13,19 @@ import ObjectMapper
 protocol MainViewModelProtocol: class {
     var regions: [String] { get }
     
-    func getRegionData(_ region: String) -> SignalProducer<(), NoError>
+    func getRegionData(_ region: String) -> SignalProducer<(), ErrorEntity>
 }
 
 class MainViewModel: GeneralViewModel, MainViewModelProtocol {
     
     let regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
     
-    var countres = [CountryEntity]()
-    
-    func getRegionData(_ region: String) -> SignalProducer<(), NoError> {
+    func getRegionData(_ region: String) -> SignalProducer<(), ErrorEntity> {
         return SignalProducer { [weak self] observer, _ in
-            networkProvider.request(.byRegion(region), completion: { (result) in
-                processing(observer: observer, result: result, closure: { (arrayJson) in
-                    self?.countres = Mapper<CountryEntity>().mapArray(JSONArray: arrayJson)
+            networkProvider.request(.byRegion(region.lowercased()), completion: { (result) in
+                processing(observer: observer, result: result, closure: { (json) in
+                    guard let arrayJson = json as? [[String: AnyObject]] else { return }
+                    self?.presenter.openCountriesVC(region, Mapper<CountryEntity>().mapArray(JSONArray: arrayJson))
                 })
             })
         }
