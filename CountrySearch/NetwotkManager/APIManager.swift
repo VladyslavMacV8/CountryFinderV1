@@ -97,16 +97,10 @@ func processing(observer: Signal<(), ErrorEntity>.Observer, result: Result<Moya.
             
             let json = try response.mapJSON()
             
-            if let jsonDict = json as? [String: AnyObject], let errorStatus = jsonDict[MapperKey.status] as? Int, errorStatus == 404 {
-                
+            if let jsonDict = json as? [String: AnyObject] {
                 let presenter: Presenter = PresenterImpl()
-                if errorStatus == 404 {
-                    let alert = showCustomError(error: ErrorEntity.notFound)
-                    presenter.openAlertVCForError(alert)
-                } else {
-                    let alert = showCustomError(error: ErrorEntity.otherError("Unknown Error"))
-                    presenter.openAlertVCForError(alert)
-                }
+                let alert = showCustomError(error: ErrorEntity.createEntity(jsonDict, "Unknown Error"))
+                presenter.openAlertVCForError(alert)
                 
                 observer.send(error: ErrorEntity.createEntity(jsonDict, "Unknown Error"))
             } else {

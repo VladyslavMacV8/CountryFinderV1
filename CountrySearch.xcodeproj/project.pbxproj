@@ -27,6 +27,8 @@
 		5999AD6A216E7D72007AF211 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999AD69216E7D72007AF211 /* MainViewModel.swift */; };
 		5999AD6C216E7E08007AF211 /* GeneralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999AD6B216E7E08007AF211 /* GeneralViewModel.swift */; };
 		5999AD6F216E8339007AF211 /* CountryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999AD6E216E8339007AF211 /* CountryEntity.swift */; };
+		599DFF0D2171271C0052A376 /* OperationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599DFF0C2171271C0052A376 /* OperationExtension.swift */; };
+		599DFF0F217148560052A376 /* CountriesViewModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599DFF0E217148560052A376 /* CountriesViewModel+Extension.swift */; };
 		59C4F199216FBFA500737E59 /* ErrorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4F198216FBFA500737E59 /* ErrorEntity.swift */; };
 		59C4F19B216FC3D300737E59 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4F19A216FC3D300737E59 /* UIAlertExtension.swift */; };
 		59C4F19D216FCEFB00737E59 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4F19C216FCEFB00737E59 /* CountriesViewController.swift */; };
@@ -58,6 +60,8 @@
 		5999AD69216E7D72007AF211 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		5999AD6B216E7E08007AF211 /* GeneralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewModel.swift; sourceTree = "<group>"; };
 		5999AD6E216E8339007AF211 /* CountryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryEntity.swift; sourceTree = "<group>"; };
+		599DFF0C2171271C0052A376 /* OperationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationExtension.swift; sourceTree = "<group>"; };
+		599DFF0E217148560052A376 /* CountriesViewModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountriesViewModel+Extension.swift"; sourceTree = "<group>"; };
 		59C4F198216FBFA500737E59 /* ErrorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEntity.swift; sourceTree = "<group>"; };
 		59C4F19A216FC3D300737E59 /* UIAlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
 		59C4F19C216FCEFB00737E59 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +125,7 @@
 				5999AD67216E7C86007AF211 /* UI */,
 				5999AD55216E7320007AF211 /* Presenter */,
 				5999AD58216E7320007AF211 /* Router */,
-				5999AD52216E6C7E007AF211 /* Utils */,
+				5999AD52216E6C7E007AF211 /* Utils+Extension */,
 				5999AD4D216E6BCD007AF211 /* NetwotkManager */,
 				5991356D216E65E100AB1539 /* AppDelegate.swift */,
 				5999AD5F216E73C5007AF211 /* CustomNavigationController.swift */,
@@ -143,7 +147,7 @@
 			path = NetwotkManager;
 			sourceTree = "<group>";
 		};
-		5999AD52216E6C7E007AF211 /* Utils */ = {
+		5999AD52216E6C7E007AF211 /* Utils+Extension */ = {
 			isa = PBXGroup;
 			children = (
 				5999AD61216E74AD007AF211 /* UIAplicationExtension.swift */,
@@ -151,8 +155,9 @@
 				5999AD53216E6CE5007AF211 /* Constants.swift */,
 				5999AD63216E7686007AF211 /* AppStoryboard.swift */,
 				59C4F19A216FC3D300737E59 /* UIAlertExtension.swift */,
+				599DFF0C2171271C0052A376 /* OperationExtension.swift */,
 			);
-			path = Utils;
+			path = "Utils+Extension";
 			sourceTree = "<group>";
 		};
 		5999AD55216E7320007AF211 /* Presenter */ = {
@@ -189,6 +194,7 @@
 				5999AD6B216E7E08007AF211 /* GeneralViewModel.swift */,
 				5999AD69216E7D72007AF211 /* MainViewModel.swift */,
 				59C4F19E216FD0C900737E59 /* CountriesViewModel.swift */,
+				599DFF0E217148560052A376 /* CountriesViewModel+Extension.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PocketSVG/PocketSVG.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -333,6 +340,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketSVG.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -351,6 +359,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5999AD62216E74AD007AF211 /* UIAplicationExtension.swift in Sources */,
+				599DFF0F217148560052A376 /* CountriesViewModel+Extension.swift in Sources */,
+				599DFF0D2171271C0052A376 /* OperationExtension.swift in Sources */,
 				5999AD54216E6CE5007AF211 /* Constants.swift in Sources */,
 				59C4F19D216FCEFB00737E59 /* CountriesViewController.swift in Sources */,
 				59C4F19F216FD0C900737E59 /* CountriesViewModel.swift in Sources */,
@@ -521,10 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FW5YV3C8HR;
 				INFOPLIST_FILE = CountrySearch/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vladyslavsCompany.CountrySearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountrySearch/CountrySearch-Bridging-Header.h";
@@ -543,10 +550,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FW5YV3C8HR;
 				INFOPLIST_FILE = CountrySearch/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vladyslavsCompany.CountrySearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountrySearch/CountrySearch-Bridging-Header.h";

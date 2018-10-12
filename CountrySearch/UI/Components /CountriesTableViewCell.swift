@@ -13,33 +13,39 @@ class CountriesTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet private weak var flagImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var nativeNameLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    private let placeholder = UIImage(named: "Flag_placeholder")
-
+    var countyData: CountryEntity? {
+        didSet {
+            if let data = countyData {
+                nameLabel.text = data.name
+                nativeNameLabel.text = data.nativeName
+                updateImageViewWithImage(nil)
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         selectionStyle = .none
-        
-        flagImageView.clipsToBounds = true
-        flagImageView.layer.cornerRadius = flagImageView.frame.width / 2
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        flagImageView.image = placeholder
-    }
-
-    func update(_ country: CountryEntity) {
-        DispatchQueue.global().async {
-            let svg = SVGKImage(contentsOf: URL(string: country.flag))?.uiImage
-            DispatchQueue.main.async { [weak self] in
-                self?.flagImageView.image = svg
-            }
+    func updateImageViewWithImage(_ image: UIImage?) {
+        if let image = image {
+            flagImageView.image = image
+            flagImageView.alpha = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.flagImageView.alpha = 1.0
+                self.activityIndicator.alpha = 0
+            }, completion: { _ in
+                self.activityIndicator.stopAnimating()
+            })
+        } else {
+            flagImageView.image = nil
+            flagImageView.alpha = 0
+            activityIndicator.alpha = 1.0
+            activityIndicator.startAnimating()
         }
-        
-        nameLabel.text = country.name
-        nativeNameLabel.text = country.nativeName
     }
-    
 }

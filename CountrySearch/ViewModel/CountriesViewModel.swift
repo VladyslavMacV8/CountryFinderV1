@@ -10,10 +10,14 @@ import ReactiveSwift
 
 protocol CountriesViewModelProtocol: class {
     var countries: [CountryEntity] { get set }
+    var imageProviders: Set<CacheFlagImageProvider> { get set }
 }
 
 class CountriesViewModel: GeneralViewModel, CountriesViewModelProtocol {
     var countries = [CountryEntity]()
+    var imageProviders: Set<CacheFlagImageProvider> = []
     
     
 }
+
+

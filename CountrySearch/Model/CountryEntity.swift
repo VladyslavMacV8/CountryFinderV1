@@ -22,3 +22,9 @@ class CountryEntity: Mappable {
         nativeName  <- map[MapperKey.nativeName]
     }
 }
+
+extension CountryEntity: Equatable {
+    static func == (lhs: CountryEntity, rhs: CountryEntity) -> Bool {
+        return lhs.nativeName == rhs.nativeName && lhs.flag == rhs.flag
+    }
+}

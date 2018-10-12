@@ -9,6 +9,7 @@ target 'CountrySearch' do
 	pod 'ReactiveCocoa' 	
 	pod 'ObjectMapper'
 	pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
+	pod 'PocketSVG', '~> 2.0'
 
 end
 
