@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="C4i-ZF-FTA" customClass="DetailCountryView" customModule="CountrySearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="237"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kt6-7P-Eqs">
+                    <rect key="frame" x="15" y="15" width="46" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kt6-7P-Eqs" secondAttribute="height" id="L0v-Tl-5Ya"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UhD-gF-N0Z">
+                    <rect key="frame" x="94.5" y="16" width="213.5" height="16"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="currency" translatesAutoresizingMaskIntoConstraints="NO" id="iMR-Sy-wqh">
+                    <rect key="frame" x="71" y="15" width="18.5" height="18.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="iMR-Sy-wqh" secondAttribute="height" id="Ypq-aF-s3Z"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="language" translatesAutoresizingMaskIntoConstraints="NO" id="e1Y-uI-80y">
+                    <rect key="frame" x="71" y="42.5" width="18.5" height="18.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="e1Y-uI-80y" secondAttribute="height" id="x0m-4Q-yzk"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-co-d3T">
+                    <rect key="frame" x="94.5" y="44" width="213.5" height="16"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-A7-uiV">
+                    <rect key="frame" x="25" y="86" width="273" height="126"/>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hpy-co-d3T" firstAttribute="leading" secondItem="e1Y-uI-80y" secondAttribute="trailing" constant="5" id="3jB-DP-kxW"/>
+                <constraint firstItem="iMR-Sy-wqh" firstAttribute="top" secondItem="kt6-7P-Eqs" secondAttribute="top" id="4Sm-nt-jZX"/>
+                <constraint firstItem="kt6-7P-Eqs" firstAttribute="leading" secondItem="201-Mr-WlV" secondAttribute="leading" constant="15" id="5Ef-pA-J1Y"/>
+                <constraint firstItem="UhD-gF-N0Z" firstAttribute="leading" secondItem="iMR-Sy-wqh" secondAttribute="trailing" constant="5" id="5VU-vU-Fej"/>
+                <constraint firstItem="e1Y-uI-80y" firstAttribute="leading" secondItem="iMR-Sy-wqh" secondAttribute="leading" id="78Q-FZ-Q4m"/>
+                <constraint firstItem="kt6-7P-Eqs" firstAttribute="width" secondItem="C4i-ZF-FTA" secondAttribute="width" multiplier="1:7" id="7KN-vR-ujd"/>
+                <constraint firstItem="e1Y-uI-80y" firstAttribute="height" secondItem="kt6-7P-Eqs" secondAttribute="height" multiplier="1:2.5" id="A4Q-en-yQg"/>
+                <constraint firstItem="201-Mr-WlV" firstAttribute="bottom" secondItem="ju1-A7-uiV" secondAttribute="bottom" constant="25" id="BmV-mu-AdW"/>
+                <constraint firstItem="201-Mr-WlV" firstAttribute="trailing" secondItem="ju1-A7-uiV" secondAttribute="trailing" constant="25" id="GJI-2A-4us"/>
+                <constraint firstItem="iMR-Sy-wqh" firstAttribute="leading" secondItem="kt6-7P-Eqs" secondAttribute="trailing" constant="10" id="RcL-cc-fw5"/>
+                <constraint firstItem="201-Mr-WlV" firstAttribute="trailing" secondItem="UhD-gF-N0Z" secondAttribute="trailing" constant="15" id="Rwi-uu-ED9"/>
+                <constraint firstItem="kt6-7P-Eqs" firstAttribute="top" secondItem="201-Mr-WlV" secondAttribute="top" constant="15" id="Syk-fX-zlH"/>
+                <constraint firstItem="ju1-A7-uiV" firstAttribute="top" secondItem="kt6-7P-Eqs" secondAttribute="bottom" constant="25" id="UJl-U3-2zK"/>
+                <constraint firstItem="hpy-co-d3T" firstAttribute="centerY" secondItem="e1Y-uI-80y" secondAttribute="centerY" id="YrL-Rz-eH4"/>
+                <constraint firstItem="ju1-A7-uiV" firstAttribute="leading" secondItem="201-Mr-WlV" secondAttribute="leading" constant="25" id="hVS-Qy-PM5"/>
+                <constraint firstItem="UhD-gF-N0Z" firstAttribute="centerY" secondItem="iMR-Sy-wqh" secondAttribute="centerY" id="phV-xw-4Uf"/>
+                <constraint firstItem="e1Y-uI-80y" firstAttribute="bottom" secondItem="kt6-7P-Eqs" secondAttribute="bottom" id="tyk-Xs-HEE"/>
+                <constraint firstItem="iMR-Sy-wqh" firstAttribute="height" secondItem="kt6-7P-Eqs" secondAttribute="height" multiplier="1:2.5" id="w6w-G0-wfT"/>
+                <constraint firstItem="201-Mr-WlV" firstAttribute="trailing" secondItem="hpy-co-d3T" secondAttribute="trailing" constant="15" id="zHS-sd-O2a"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="201-Mr-WlV"/>
+            <connections>
+                <outlet property="currencyLabel" destination="UhD-gF-N0Z" id="f1d-6J-EV5"/>
+                <outlet property="flagImageView" destination="kt6-7P-Eqs" id="GBW-eX-bIZ"/>
+                <outlet property="languageLabel" destination="hpy-co-d3T" id="563-AZ-FHd"/>
+                <outlet property="mapView" destination="ju1-A7-uiV" id="K7R-Li-x48"/>
+            </connections>
+            <point key="canvasLocation" x="-109.59999999999999" y="-39.130434782608695"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="currency" width="512" height="512"/>
+        <image name="language" width="491.51998901367188" height="491.51998901367188"/>
+    </resources>
+</document>

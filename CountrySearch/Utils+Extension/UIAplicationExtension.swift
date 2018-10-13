@@ -34,4 +34,3 @@ extension UIApplication {
         return navigation
     }
 }
-

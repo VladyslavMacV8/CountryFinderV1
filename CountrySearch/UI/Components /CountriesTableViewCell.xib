@@ -71,7 +71,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="activityIndicator" destination="FyF-aS-T4b" id="vcT-m3-6aK"/>
-                <outlet property="flagImageView" destination="yGA-3g-Uc4" id="s80-2b-kF7"/>
+                <outlet property="flagImageView" destination="yGA-3g-Uc4" id="brh-wG-4Zi"/>
                 <outlet property="nameLabel" destination="vHe-t2-Ggm" id="g3n-hl-l4y"/>
                 <outlet property="nativeNameLabel" destination="5Ua-wa-tgC" id="wwx-tL-C2H"/>
             </connections>

@@ -31,4 +31,11 @@ final class PresenterImpl: Presenter {
         vc.viewModel.countries = value
         router.push(controller: vc, animated: true)
     }
+    
+    func openDetailVC(_ value: CountryEntity) {
+        let vc = DetailCountryViewController.instantiate(from: .Main)
+        vc.title = value.name
+        vc.viewModel.country = value
+        router.push(controller: vc, animated: true)
+    }
 }

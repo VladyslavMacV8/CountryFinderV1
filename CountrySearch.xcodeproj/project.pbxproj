@@ -35,7 +35,11 @@
 		59C4F19F216FD0C900737E59 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4F19E216FD0C900737E59 /* CountriesViewModel.swift */; };
 		59C4F1A3216FD40A00737E59 /* CountriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4F1A1216FD40A00737E59 /* CountriesTableViewCell.swift */; };
 		59C4F1A4216FD40A00737E59 /* CountriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59C4F1A2216FD40A00737E59 /* CountriesTableViewCell.xib */; };
-		59C4F1AA216FE22600737E59 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4F1A9216FE22600737E59 /* SVGKit.framework */; };
+		59D84A1721720B3C00E05B2A /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D84A1621720B3C00E05B2A /* SVGKit.framework */; };
+		59D84A1921722C3600E05B2A /* DetailCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D84A1821722C3600E05B2A /* DetailCountryView.swift */; };
+		59D84A1B21722C4600E05B2A /* DetailCountryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59D84A1A21722C4600E05B2A /* DetailCountryView.xib */; };
+		59D84A1D217238E400E05B2A /* DetailCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D84A1C217238E400E05B2A /* DetailCountryViewController.swift */; };
+		59D84A1F21723BB900E05B2A /* DetailCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D84A1E21723BB900E05B2A /* DetailCountryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,11 @@
 		59C4F1A7216FE1AB00737E59 /* SVGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C4F1A9216FE22600737E59 /* SVGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C4F1B2216FE57E00737E59 /* CountrySearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CountrySearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		59D84A1621720B3C00E05B2A /* SVGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59D84A1821722C3600E05B2A /* DetailCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCountryView.swift; sourceTree = "<group>"; };
+		59D84A1A21722C4600E05B2A /* DetailCountryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCountryView.xib; sourceTree = "<group>"; };
+		59D84A1C217238E400E05B2A /* DetailCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCountryViewController.swift; sourceTree = "<group>"; };
+		59D84A1E21723BB900E05B2A /* DetailCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCountryViewModel.swift; sourceTree = "<group>"; };
 		89BE7B4F0A1ED38BC60589F3 /* Pods-CountrySearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountrySearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountrySearch/Pods-CountrySearch.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F601E8F4951C48E03EA15F /* Pods-CountrySearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountrySearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountrySearch/Pods-CountrySearch.release.xcconfig"; sourceTree = "<group>"; };
 		EFAA4C84671FA6D7406CAC96 /* Pods_CountrySearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountrySearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59C4F1AA216FE22600737E59 /* SVGKit.framework in Frameworks */,
+				59D84A1721720B3C00E05B2A /* SVGKit.framework in Frameworks */,
 				4514211179B8D792AD09C497 /* Pods_CountrySearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +193,7 @@
 				59C4F1A0216FD3EF00737E59 /* Components  */,
 				5991356F216E65E100AB1539 /* MainViewController.swift */,
 				59C4F19C216FCEFB00737E59 /* CountriesViewController.swift */,
+				59D84A1C217238E400E05B2A /* DetailCountryViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -195,6 +205,7 @@
 				5999AD69216E7D72007AF211 /* MainViewModel.swift */,
 				59C4F19E216FD0C900737E59 /* CountriesViewModel.swift */,
 				599DFF0E217148560052A376 /* CountriesViewModel+Extension.swift */,
+				59D84A1E21723BB900E05B2A /* DetailCountryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -213,6 +224,8 @@
 			children = (
 				59C4F1A1216FD40A00737E59 /* CountriesTableViewCell.swift */,
 				59C4F1A2216FD40A00737E59 /* CountriesTableViewCell.xib */,
+				59D84A1821722C3600E05B2A /* DetailCountryView.swift */,
+				59D84A1A21722C4600E05B2A /* DetailCountryView.xib */,
 			);
 			path = "Components ";
 			sourceTree = "<group>";
@@ -220,6 +233,7 @@
 		7651190B48243F4335B7281F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59D84A1621720B3C00E05B2A /* SVGKit.framework */,
 				59C4F1A9216FE22600737E59 /* SVGKit.framework */,
 				59C4F1A7216FE1AB00737E59 /* SVGKit.framework */,
 				59C4F1A5216FE05200737E59 /* SwiftSVG.framework */,
@@ -289,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59D84A1B21722C4600E05B2A /* DetailCountryView.xib in Resources */,
 				59913578216E65E300AB1539 /* LaunchScreen.storyboard in Resources */,
 				59913575216E65E300AB1539 /* Assets.xcassets in Resources */,
 				59C4F1A4216FD40A00737E59 /* CountriesTableViewCell.xib in Resources */,
@@ -328,9 +343,10 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/PocketSVG/PocketSVG.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 			);
@@ -340,9 +356,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketSVG.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 			);
@@ -362,6 +379,7 @@
 				599DFF0F217148560052A376 /* CountriesViewModel+Extension.swift in Sources */,
 				599DFF0D2171271C0052A376 /* OperationExtension.swift in Sources */,
 				5999AD54216E6CE5007AF211 /* Constants.swift in Sources */,
+				59D84A1921722C3600E05B2A /* DetailCountryView.swift in Sources */,
 				59C4F19D216FCEFB00737E59 /* CountriesViewController.swift in Sources */,
 				59C4F19F216FD0C900737E59 /* CountriesViewModel.swift in Sources */,
 				5999AD6C216E7E08007AF211 /* GeneralViewModel.swift in Sources */,
@@ -373,12 +391,14 @@
 				59C4F199216FBFA500737E59 /* ErrorEntity.swift in Sources */,
 				5999AD60216E73C5007AF211 /* CustomNavigationController.swift in Sources */,
 				5999AD6A216E7D72007AF211 /* MainViewModel.swift in Sources */,
+				59D84A1F21723BB900E05B2A /* DetailCountryViewModel.swift in Sources */,
 				5999AD66216E79BF007AF211 /* ReuseExtension.swift in Sources */,
 				5999AD5E216E7320007AF211 /* Router.swift in Sources */,
 				5999AD51216E6BCE007AF211 /* ApiManagerEndpoints.swift in Sources */,
 				59913570216E65E100AB1539 /* MainViewController.swift in Sources */,
 				5999AD5D216E7320007AF211 /* RouterImpl.swift in Sources */,
 				5991356E216E65E100AB1539 /* AppDelegate.swift in Sources */,
+				59D84A1D217238E400E05B2A /* DetailCountryViewController.swift in Sources */,
 				59C4F19B216FC3D300737E59 /* UIAlertExtension.swift in Sources */,
 				5999AD6F216E8339007AF211 /* CountryEntity.swift in Sources */,
 			);
@@ -531,7 +551,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FW5YV3C8HR;
 				INFOPLIST_FILE = CountrySearch/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vladyslavsCompany.CountrySearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountrySearch/CountrySearch-Bridging-Header.h";
@@ -550,7 +573,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FW5YV3C8HR;
 				INFOPLIST_FILE = CountrySearch/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vladyslavsCompany.CountrySearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountrySearch/CountrySearch-Bridging-Header.h";

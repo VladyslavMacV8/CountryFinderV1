@@ -24,6 +24,6 @@ let endpointClosure = {(target: ApiManager) -> Endpoint in
 }
 
 enum ApiManagerKey {
-    
+    static let codes = "codes"
     
 }

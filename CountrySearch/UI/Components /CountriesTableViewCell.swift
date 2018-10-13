@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
 
 class CountriesTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     
@@ -15,9 +17,9 @@ class CountriesTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet private weak var nativeNameLabel: UILabel!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    var countyData: CountryEntity? {
+    var countryData: CountryEntity? {
         didSet {
-            if let data = countyData {
+            if let data = countryData {
                 nameLabel.text = data.name
                 nativeNameLabel.text = data.nativeName
                 updateImageViewWithImage(nil)
@@ -27,23 +29,23 @@ class CountriesTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         selectionStyle = .none
+        
     }
-    
+
     func updateImageViewWithImage(_ image: UIImage?) {
         if let image = image {
             flagImageView.image = image
             flagImageView.alpha = 0
             UIView.animate(withDuration: 0.3, animations: {
-                self.flagImageView.alpha = 1.0
+                self.flagImageView.alpha = 1
                 self.activityIndicator.alpha = 0
             }, completion: { _ in
                 self.activityIndicator.stopAnimating()
             })
         } else {
-            flagImageView.image = nil
             flagImageView.alpha = 0
+            flagImageView.image = nil
             activityIndicator.alpha = 1.0
             activityIndicator.startAnimating()
         }

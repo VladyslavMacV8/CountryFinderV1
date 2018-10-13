@@ -7,24 +7,68 @@
 //
 
 import ObjectMapper
+import RealmSwift
 
-class CountryEntity: Mappable {
-    
-    var flag        = ""
-    var name        = ""
-    var nativeName  = ""    
-    
-    required init?(map: Map) {}
+class CountryEntity: Object, StaticMappable {
+    @objc dynamic var flag        = ""
+    @objc dynamic var name        = ""
+    @objc dynamic var nativeName  = ""
+    var coordinates = [Double]()
+    var borders     = [String]()
+    var currencies  = [CurrencyCountryEntity]()
+    var languages   = [LanguageCountryEntity]()
     
     func mapping(map: Map) {
         flag        <- map[MapperKey.flag]
         name        <- map[MapperKey.name]
         nativeName  <- map[MapperKey.nativeName]
+        coordinates <- map[MapperKey.latlng]
+        borders     <- map[MapperKey.borders]
+        currencies  <- map[MapperKey.currencies]
+        languages   <- map[MapperKey.languages]
+    }
+    
+    override class func primaryKey() -> String? {
+        return "flag"
+    }
+    
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        return CountryEntity()
     }
 }
 
-extension CountryEntity: Equatable {
-    static func == (lhs: CountryEntity, rhs: CountryEntity) -> Bool {
-        return lhs.nativeName == rhs.nativeName && lhs.flag == rhs.flag
+class CurrencyCountryEntity: Object, StaticMappable {
+    @objc dynamic var name            = ""
+    @objc dynamic private var code    = ""
+    
+    func mapping(map: Map) {
+        name <- map[MapperKey.name]
+        code <- map[MapperKey.code]
+    }
+    
+    override class func primaryKey() -> String? {
+        return "code"
+    }
+    
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        return CurrencyCountryEntity()
+    }
+}
+
+class LanguageCountryEntity: Object, StaticMappable {
+    @objc dynamic var name        = ""
+    @objc dynamic private var iso = ""
+    
+    func mapping(map: Map) {
+        name    <- map[MapperKey.name]
+        iso     <- map[MapperKey.iso]
+    }
+    
+    override class func primaryKey() -> String? {
+        return "iso"
+    }
+    
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        return LanguageCountryEntity()
     }
 }

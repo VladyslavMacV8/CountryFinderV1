@@ -12,11 +12,15 @@ PODS:
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
   - ObjectMapper (3.3.0)
-  - PocketSVG (2.4.0)
   - ReactiveCocoa (7.2.0):
     - ReactiveSwift (~> 3.1)
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
+  - Realm (3.11.0):
+    - Realm/Headers (= 3.11.0)
+  - Realm/Headers (3.11.0)
+  - RealmSwift (3.11.0):
+    - Realm (= 3.11.0)
   - Result (3.2.4)
   - SVGKit (2.0.1):
     - CocoaLumberjack (~> 3.x)
@@ -24,8 +28,8 @@ PODS:
 DEPENDENCIES:
   - Moya
   - ObjectMapper
-  - PocketSVG (~> 2.0)
   - ReactiveCocoa
+  - RealmSwift
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `2.x`)
 
 SPEC REPOS:
@@ -34,9 +38,10 @@ SPEC REPOS:
     - CocoaLumberjack
     - Moya
     - ObjectMapper
-    - PocketSVG
     - ReactiveCocoa
     - ReactiveSwift
+    - Realm
+    - RealmSwift
     - Result
 
 EXTERNAL SOURCES:
@@ -46,7 +51,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SVGKit:
-    :commit: 733acf66e44a02396efc8a6f445d190af592d544
+    :commit: 6b673b7ae452e481593047251a61e061bd0aa5a9
     :git: https://github.com/SVGKit/SVGKit.git
 
 SPEC CHECKSUMS:
@@ -54,12 +59,13 @@ SPEC CHECKSUMS:
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  PocketSVG: 8ac7b20a881ca1a3d46ba1e54ee2b0f2307c3d48
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Realm: 92f09a102692b96a9a10e9617f214f15c5ab85fc
+  RealmSwift: 5f0481cd658bb751c509314b964a35eaa264d2cf
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SVGKit: 4055d9e809b5db8633755979cfb3b02dc5a8c20d
 
-PODFILE CHECKSUM: 4ed2cba4ce43d49942db038151dd18f119a760fe
+PODFILE CHECKSUM: fb44580d30a0f23151ababd44604ae75d71ab40f
 
 COCOAPODS: 1.5.0

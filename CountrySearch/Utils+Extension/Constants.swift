@@ -21,4 +21,9 @@ enum MapperKey {
     static let flag         = "flag"
     static let name         = "name"
     static let nativeName   = "nativeName"
+    static let latlng       = "latlng"
+    static let borders      = "borders"
+    static let languages    = "languages"
+    static let iso          = "iso639_2"
+    static let currencies   = "currencies"
 }

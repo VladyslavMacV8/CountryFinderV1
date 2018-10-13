@@ -13,7 +13,7 @@ let flagImageCache = NSCache<NSString, UIImage>()
 
 class CacheFlagImageOperation: AsyncOperation {
     private let urlString: String
-    private let completion: ((UIImage) -> ())?
+    private let completion: ((UIImage?) -> ())?
     
     init(_ urlStr: String, _ completion: ((UIImage?) -> ())?) {
         self.urlString = urlStr
@@ -24,30 +24,23 @@ class CacheFlagImageOperation: AsyncOperation {
     override func main() {
         if isCancelled { return }
         
-        if let imageFromCache = flagImageCache.object(forKey: urlString as NSString) {
-            completion?(imageFromCache)
-            return
-        }
-        
         guard let url = URL(string: urlString) else { return }
-        asyncLoadData(url).start { (event) in
-            switch event {
-            case .value(let image):
-                flagImageCache.setObject(image, forKey: self.urlString as NSString)
-                self.completion?(image)
-            case .completed:
-                self.state = .Finished
-            default: break
-            }
+        asyncLoadData(from: url) { [weak self] (image) in
+            guard let `self` = self else { return }
+            if self.isCancelled { return }
+            flagImageCache.setObject(image, forKey: self.urlString as NSString)
+            self.completion?(image)
+            self.state = .Finished
         }
     }
     
-    private func asyncLoadData(_ url: URL) -> SignalProducer<UIImage, NoError> {
-        return SignalProducer { observer, _ in
-            if self.isCancelled { return }
-            guard let svg = SVGKImage(contentsOf: url), let svgImage = svg.uiImage else { return }
-            observer.send(value: svgImage)
-            observer.sendCompleted()
+    private func asyncLoadData(from url: URL, _ completion: @escaping ((UIImage) -> ())) {
+        DispatchQueue.global(qos: .background).async {
+            usleep(arc4random_uniform(2 * 1000000))
+            guard let svg = SVGKImage(contentsOf: url)?.uiImage else { return }
+            DispatchQueue.main.async {
+                completion(svg)
+            }
         }
     }
 }

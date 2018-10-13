@@ -88,5 +88,44 @@
             </objects>
             <point key="canvasLocation" x="341" y="48"/>
         </scene>
+        <!--Detail Country View Controller-->
+        <scene sceneID="9cy-ck-aMX">
+            <objects>
+                <viewController storyboardIdentifier="DetailCountryViewController" id="POv-mr-PuZ" customClass="DetailCountryViewController" customModule="CountrySearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pjz-EG-XgR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-Pg-7bg">
+                                <rect key="frame" x="0.0" y="44" width="375" height="324.66666666666669"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ELu-AB-rd3">
+                                <rect key="frame" x="0.0" y="368.66666666666674" width="375" height="409.33333333333326"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HAY-Pg-7bg" firstAttribute="height" secondItem="pjz-EG-XgR" secondAttribute="height" multiplier="1:2.5" id="41V-9j-Vhn"/>
+                            <constraint firstItem="Weq-GK-B5u" firstAttribute="bottom" secondItem="ELu-AB-rd3" secondAttribute="bottom" id="I5T-zX-5eK"/>
+                            <constraint firstItem="Weq-GK-B5u" firstAttribute="trailing" secondItem="HAY-Pg-7bg" secondAttribute="trailing" id="Jbk-c2-w8C"/>
+                            <constraint firstItem="ELu-AB-rd3" firstAttribute="top" secondItem="HAY-Pg-7bg" secondAttribute="bottom" id="Lbl-c8-Fuh"/>
+                            <constraint firstItem="ELu-AB-rd3" firstAttribute="leading" secondItem="Weq-GK-B5u" secondAttribute="leading" id="PSU-PD-77a"/>
+                            <constraint firstItem="Weq-GK-B5u" firstAttribute="trailing" secondItem="ELu-AB-rd3" secondAttribute="trailing" id="oBq-w2-r6Y"/>
+                            <constraint firstItem="HAY-Pg-7bg" firstAttribute="top" secondItem="Weq-GK-B5u" secondAttribute="top" id="oej-06-F3n"/>
+                            <constraint firstItem="HAY-Pg-7bg" firstAttribute="leading" secondItem="Weq-GK-B5u" secondAttribute="leading" id="x4F-gD-zfW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Weq-GK-B5u"/>
+                    </view>
+                    <connections>
+                        <outlet property="headView" destination="HAY-Pg-7bg" id="ONV-Ef-iWv"/>
+                        <outlet property="tableView" destination="ELu-AB-rd3" id="fjV-Ex-ejS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TZV-gs-KYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400.8" y="46.551724137931039"/>
+        </scene>
     </scenes>
 </document>

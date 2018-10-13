@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     private func setup() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
     }
 }
 

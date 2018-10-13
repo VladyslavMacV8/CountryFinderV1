@@ -31,6 +31,7 @@ private extension String {
 public enum ApiManager {
     case byName(String)
     case byRegion(String)
+    case byCode(String)
 }
 
 extension ApiManager: TargetType {
@@ -57,12 +58,13 @@ extension ApiManager: TargetType {
     }
     
     public var path: String {
-        
         switch self {
         case .byName(let title):
             return "name/\(title)"
         case .byRegion(let title):
             return "region/\(title)"
+        case .byCode(_):
+            return "alpha"
         }
     }
     
@@ -71,18 +73,14 @@ extension ApiManager: TargetType {
     }
     
     public var parameters: Task {
-        let value = [String: Any]()
-        
         switch self {
-            
         case .byName(_):
             return .requestPlain
         case .byRegion(_):
             return .requestPlain
-            
+        case .byCode(let code):
+            return .requestCompositeData(bodyData: Data(), urlParameters: [ApiManagerKey.codes: code])
         }
-        
-        return .requestParameters(parameters: value, encoding: JSONEncoding.default)
     }
 }
 

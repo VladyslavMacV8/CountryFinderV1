@@ -38,7 +38,7 @@ extension ErrorEntity: CustomStringConvertible {
 }
 
 extension ErrorEntity: EntityCreatable {
-    static func createEntity(_ dict: [String : Any], _ text: String) -> ErrorEntity {
+    static func createEntity(_ dict: [String: Any], _ text: String) -> ErrorEntity {
         guard let code = dict[MapperKey.status] as? Int,
             let message = dict[MapperKey.message] as? String else {
                 return ErrorEntity.otherError(text)
