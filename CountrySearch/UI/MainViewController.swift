@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class MainViewController: UIViewController {
     
@@ -51,6 +52,15 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.getRegionData(viewModel.regions[indexPath.row]).start()
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading countries"
+        hud.show(in: view, animated: true)
+        
+        viewModel.getRegionData(viewModel.regions[indexPath.row]).start { (event) in
+            hud.dismiss(animated: true)
+            switch event {
+            default: break
+            }
+        }
     }
 }

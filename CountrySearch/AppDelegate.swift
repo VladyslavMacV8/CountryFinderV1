@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        makeRoot(viewController: MainViewController.instantiate(from: .Main))
+        let tabBarController = CustomTabBarController.instantiate(from: .Main)
+        makeRoot(viewController: tabBarController)
         return true
     }
     

@@ -9,7 +9,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Custom Tab Bar Controller-->
+        <scene sceneID="u3R-hw-aZn">
+            <objects>
+                <tabBarController storyboardIdentifier="CustomTabBarController" id="aMg-54-ayH" customClass="CustomTabBarController" customModule="CountrySearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gXA-Ey-zU1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llO-4i-v9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1070" y="47"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="AMe-F0-lmc">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="9cK-pM-3P8" customClass="SearchViewController" customModule="CountrySearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Pj-c5-aix">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQg-82-uiD">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SQg-82-uiD" firstAttribute="top" secondItem="vpK-cq-rSw" secondAttribute="top" id="NTE-AE-UFX"/>
+                            <constraint firstItem="vpK-cq-rSw" firstAttribute="bottom" secondItem="SQg-82-uiD" secondAttribute="bottom" id="flU-e3-7ZQ"/>
+                            <constraint firstItem="SQg-82-uiD" firstAttribute="leading" secondItem="vpK-cq-rSw" secondAttribute="leading" id="mcV-Wl-0aH"/>
+                            <constraint firstItem="vpK-cq-rSw" firstAttribute="trailing" secondItem="SQg-82-uiD" secondAttribute="trailing" id="syp-Hp-UIg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vpK-cq-rSw"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="SQg-82-uiD" id="nP8-2Q-GCk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZL-TJ-UQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1071" y="825"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="CountrySearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +85,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kPm-9o-eam" secondAttribute="trailing" id="0cp-dC-HUS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kPm-9o-eam" secondAttribute="bottom" id="1zv-bZ-vv3"/>
@@ -50,13 +94,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="eAg-py-KBc"/>
                     <connections>
                         <outlet property="tableView" destination="kPm-9o-eam" id="DxJ-cx-Ncu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-650.39999999999998" y="47.290640394088669"/>
+            <point key="canvasLocation" x="482" y="47"/>
         </scene>
         <!--Countries View Controller-->
         <scene sceneID="H1R-75-tHK">
@@ -71,7 +116,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="X34-EZ-QBF" firstAttribute="leading" secondItem="Mzd-RH-ilU" secondAttribute="leading" id="59m-cR-ttc"/>
                             <constraint firstItem="Mzd-RH-ilU" firstAttribute="trailing" secondItem="X34-EZ-QBF" secondAttribute="trailing" id="6iK-fl-RgO"/>
@@ -86,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6F3-Qr-6re" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341" y="48"/>
+            <point key="canvasLocation" x="1282.4000000000001" y="47.290640394088669"/>
         </scene>
         <!--Detail Country View Controller-->
         <scene sceneID="9cy-ck-aMX">
@@ -97,35 +142,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-Pg-7bg">
-                                <rect key="frame" x="0.0" y="44" width="375" height="324.66666666666669"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ELu-AB-rd3">
-                                <rect key="frame" x="0.0" y="368.66666666666674" width="375" height="409.33333333333326"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03Z-2b-Ca1">
+                                <rect key="frame" x="20" y="703" width="335" height="55"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="A0a-s2-dmG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Border Countries"/>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HAY-Pg-7bg" firstAttribute="height" secondItem="pjz-EG-XgR" secondAttribute="height" multiplier="1:2.5" id="41V-9j-Vhn"/>
-                            <constraint firstItem="Weq-GK-B5u" firstAttribute="bottom" secondItem="ELu-AB-rd3" secondAttribute="bottom" id="I5T-zX-5eK"/>
+                            <constraint firstItem="HAY-Pg-7bg" firstAttribute="height" secondItem="pjz-EG-XgR" secondAttribute="height" multiplier="1:1.75" id="41V-9j-Vhn"/>
+                            <constraint firstItem="03Z-2b-Ca1" firstAttribute="leading" secondItem="Weq-GK-B5u" secondAttribute="leading" constant="20" id="E5c-O6-fqg"/>
+                            <constraint firstItem="Weq-GK-B5u" firstAttribute="trailing" secondItem="03Z-2b-Ca1" secondAttribute="trailing" constant="20" id="JXV-6v-Xpw"/>
                             <constraint firstItem="Weq-GK-B5u" firstAttribute="trailing" secondItem="HAY-Pg-7bg" secondAttribute="trailing" id="Jbk-c2-w8C"/>
-                            <constraint firstItem="ELu-AB-rd3" firstAttribute="top" secondItem="HAY-Pg-7bg" secondAttribute="bottom" id="Lbl-c8-Fuh"/>
-                            <constraint firstItem="ELu-AB-rd3" firstAttribute="leading" secondItem="Weq-GK-B5u" secondAttribute="leading" id="PSU-PD-77a"/>
-                            <constraint firstItem="Weq-GK-B5u" firstAttribute="trailing" secondItem="ELu-AB-rd3" secondAttribute="trailing" id="oBq-w2-r6Y"/>
+                            <constraint firstItem="Weq-GK-B5u" firstAttribute="bottom" secondItem="03Z-2b-Ca1" secondAttribute="bottom" constant="20" id="jOt-e2-ZBA"/>
                             <constraint firstItem="HAY-Pg-7bg" firstAttribute="top" secondItem="Weq-GK-B5u" secondAttribute="top" id="oej-06-F3n"/>
                             <constraint firstItem="HAY-Pg-7bg" firstAttribute="leading" secondItem="Weq-GK-B5u" secondAttribute="leading" id="x4F-gD-zfW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Weq-GK-B5u"/>
                     </view>
                     <connections>
+                        <outlet property="borderCountriesButton" destination="03Z-2b-Ca1" id="2Nu-97-kb5"/>
                         <outlet property="headView" destination="HAY-Pg-7bg" id="ONV-Ef-iWv"/>
-                        <outlet property="tableView" destination="ELu-AB-rd3" id="fjV-Ex-ejS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZV-gs-KYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400.8" y="46.551724137931039"/>
+            <point key="canvasLocation" x="2062" y="47"/>
         </scene>
     </scenes>
 </document>

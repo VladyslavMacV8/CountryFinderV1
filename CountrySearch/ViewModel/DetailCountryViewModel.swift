@@ -11,17 +11,14 @@ import ObjectMapper
 
 protocol DetailCountryViewModelProtocol: class {
     var country: CountryEntity { get set }
-    var borderCountries: [CountryEntity] { get }
-    var imageProviders: Set<CacheFlagImageProvider> { get set }
     
     func getBorderData() -> SignalProducer<(), ErrorEntity>
-    func getSelectedCountry(_ value: CountryEntity)
+    func openBorderCountryiesVC()
 }
 
 class DetailCountryViewModel: GeneralViewModel, DetailCountryViewModelProtocol {
     var country = CountryEntity()
-    var borderCountries = [CountryEntity]()
-    var imageProviders: Set<CacheFlagImageProvider> = []
+    private var borderCountries = [CountryEntity]()
     
     func getBorderData() -> SignalProducer<(), ErrorEntity> {
         let codes = country.borders.joined(separator: ";")
@@ -39,7 +36,8 @@ class DetailCountryViewModel: GeneralViewModel, DetailCountryViewModelProtocol {
         }
     }
     
-    func getSelectedCountry(_ value: CountryEntity) {
-        presenter.openDetailVC(value)
+    func openBorderCountryiesVC() {
+        let bordersTitle = "Border countries of " + country.name
+        presenter.openCountriesVC(bordersTitle, borderCountries)
     }
 }

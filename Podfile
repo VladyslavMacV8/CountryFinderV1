@@ -10,6 +10,7 @@ target 'CountrySearch' do
 	pod 'ObjectMapper'
 	pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
 	pod 'RealmSwift'
+	pod 'JGProgressHUD'
 
 end
 

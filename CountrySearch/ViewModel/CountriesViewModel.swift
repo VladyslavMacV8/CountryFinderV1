@@ -7,12 +7,14 @@
 //
 
 import ReactiveSwift
+import ObjectMapper
 
 protocol CountriesViewModelProtocol: class {
     var countries: [CountryEntity] { get set }
     var imageProviders: Set<CacheFlagImageProvider> { get set }
     
     func getSelectedCountry(_ value: CountryEntity)
+    func searchCountry(_ name: String) -> SignalProducer<(), ErrorEntity>
 }
 
 class CountriesViewModel: GeneralViewModel, CountriesViewModelProtocol {
@@ -21,6 +23,17 @@ class CountriesViewModel: GeneralViewModel, CountriesViewModelProtocol {
     
     func getSelectedCountry(_ value: CountryEntity) {
         presenter.openDetailVC(value)
+    }
+    
+    func searchCountry(_ name: String) -> SignalProducer<(), ErrorEntity> {
+        return SignalProducer { [weak self] observer, _ in
+            networkProvider.request(.byName(name), completion: { (result) in
+                processing(observer: observer, result: result, closure: { (json) in
+                    guard let arrayJson = json as? [[String: AnyObject]] else { return }
+                    self?.countries = Mapper<CountryEntity>().mapArray(JSONArray: arrayJson)
+                })
+            })
+        }
     }
 }
 

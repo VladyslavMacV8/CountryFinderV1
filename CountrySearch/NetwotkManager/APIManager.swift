@@ -92,20 +92,13 @@ func processing(observer: Signal<(), ErrorEntity>.Observer, result: Result<Moya.
     switch(result) {
     case let .success(response):
         do {
-            
             let json = try response.mapJSON()
-            
             if let jsonDict = json as? [String: AnyObject] {
-                let presenter: Presenter = PresenterImpl()
-                let alert = showCustomError(error: ErrorEntity.createEntity(jsonDict, "Unknown Error"))
-                presenter.openAlertVCForError(alert)
-                
                 observer.send(error: ErrorEntity.createEntity(jsonDict, "Unknown Error"))
             } else {
                 closure?(json)
                 observer.sendCompleted()
             }
-            
         } catch {
             observer.send(error: ErrorEntity.otherError("Error with casting to \"Any\""))
         }

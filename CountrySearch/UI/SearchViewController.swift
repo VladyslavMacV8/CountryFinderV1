@@ -1,43 +1,56 @@
 //
-//  CountriesViewController.swift
+//  SearchViewController.swift
 //  CountrySearch
 //
-//  Created by Vladyslav Kudelia on 10/11/18.
+//  Created by Vladyslav Kudelia on 10/14/18.
 //  Copyright © 2018 Vladyslav Kudelia. All rights reserved.
 //
 
 import UIKit
+import JGProgressHUD
 
-class CountriesViewController: UIViewController {
+class SearchViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet private weak var tableView: UITableView!
-    
-    let viewModel: CountriesViewModelProtocol = CountriesViewModel()
+    private let viewModel: CountriesViewModelProtocol = CountriesViewModel()
+    private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupViews()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        flagImageCache.removeAllObjects()
-    }
-    
-    private func setup() {
+    private func setupViews() {
         tableView.register(CountriesTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+    }
+    
+    private func callSignals() {
+        guard let text = searchController.searchBar.text else { return }
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading countries"
+        hud.show(in: view, animated: true)
+        
+        viewModel.searchCountry(text).start { [weak self] (event) in
+            hud.dismiss(animated: true)
+            switch event {
+            case .completed:
+                self?.tableView.reloadData()
+            default: break
+            }
+        }
     }
 }
 
-extension CountriesViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.countries.count
     }
@@ -49,7 +62,7 @@ extension CountriesViewController: UITableViewDataSource {
     }
 }
 
-extension CountriesViewController: UITableViewDelegate {
+extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.height / 9
     }
@@ -80,5 +93,19 @@ extension CountriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.getSelectedCountry(viewModel.countries[indexPath.row])
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.tintColor = .gray
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        
+        callSignals()
     }
 }
