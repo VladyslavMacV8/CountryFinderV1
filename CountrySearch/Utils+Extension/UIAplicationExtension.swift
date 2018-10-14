@@ -9,9 +9,7 @@
 import UIKit
 
 extension UIApplication {
-    
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)
         }
@@ -29,8 +27,15 @@ extension UIApplication {
         return base
     }
     
-    class func topNavigationViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        guard let navigation = base as? CustomNavigationController else { return nil }
-        return navigation
+    class func topCustomViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let tab = base as? CustomTabBarController {
+            return tab
+        }
+        
+        if let nav = base as? CustomNavigationController {
+            return nav
+        }
+        
+        return base
     }
 }

@@ -14,11 +14,11 @@ final class PresenterImpl: Presenter {
     private let router: Router
     
     init() {
-        guard let topController = UIApplication.topNavigationViewController() else {
+        guard let root = UIApplication.topCustomViewController() as? CustomTabBarController else {
             fatalError("Could not init stack")
         }
         
-        router = RouterImpl(rootController: topController as! CustomNavigationController)
+        router = RouterImpl(rootController: root)
     }
     
     func openAlertVCForError(_ alert: UIAlertController) {

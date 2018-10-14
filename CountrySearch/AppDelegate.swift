@@ -21,10 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func makeRoot(viewController: UIViewController?) {
         if let viewController = viewController {
-            let navigationController = CustomNavigationController(rootViewController: viewController)
-            navigationController.setNavigationBarHidden(true, animated: false)
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = navigationController
+            window?.rootViewController = viewController
             window?.makeKeyAndVisible()
         }
     }
