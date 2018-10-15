@@ -32,6 +32,7 @@ public enum ApiManager {
     case byName(String)
     case byRegion(String)
     case byCode(String)
+    case byCodes(String)
 }
 
 extension ApiManager: TargetType {
@@ -63,7 +64,9 @@ extension ApiManager: TargetType {
             return "name/\(title)"
         case .byRegion(let title):
             return "region/\(title)"
-        case .byCode(_):
+        case .byCode(let code):
+            return "alpha/\(code)"
+        case .byCodes(_):
             return "alpha"
         }
     }
@@ -78,7 +81,9 @@ extension ApiManager: TargetType {
             return .requestPlain
         case .byRegion(_):
             return .requestPlain
-        case .byCode(let code):
+        case .byCode(_):
+            return .requestPlain
+        case .byCodes(let code):
             return .requestCompositeData(bodyData: Data(), urlParameters: [ApiManagerKey.codes: code])
         }
     }
@@ -93,12 +98,8 @@ func processing(observer: Signal<(), ErrorEntity>.Observer, result: Result<Moya.
     case let .success(response):
         do {
             let json = try response.mapJSON()
-            if let jsonDict = json as? [String: AnyObject] {
-                observer.send(error: ErrorEntity.createEntity(jsonDict, "Unknown Error"))
-            } else {
-                closure?(json)
-                observer.sendCompleted()
-            }
+            closure?(json)
+            observer.sendCompleted()
         } catch {
             observer.send(error: ErrorEntity.otherError("Error with casting to \"Any\""))
         }

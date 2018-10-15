@@ -26,4 +26,10 @@ enum MapperKey {
     static let languages    = "languages"
     static let iso          = "iso639_2"
     static let currencies   = "currencies"
+    static let alphaCode    = "alpha3Code"
+}
+
+enum CountryVCState {
+    case net
+    case db
 }

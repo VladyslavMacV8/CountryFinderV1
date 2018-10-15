@@ -11,7 +11,8 @@ import UIKit
 protocol Presenter {
     func openAlertVCForError(_ alert: UIAlertController)
     
-    func openCountriesVC(_ title: String, _ value: [CountryEntity])
-    func openDetailVC(_ value: CountryEntity)
+    func openCountriesVC(_ title: String, _ value: [CountryEntity], _ state: CountryVCState)
+    func openDetailVC(_ value: CountryEntity, _ state: CountryVCState)
+    func popVCAfterDeleteData()
 }
 

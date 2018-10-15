@@ -92,7 +92,7 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.getSelectedCountry(viewModel.countries[indexPath.row])
+        viewModel.getSelectedCountry(viewModel.countries[indexPath.row], .net)
     }
 }
 

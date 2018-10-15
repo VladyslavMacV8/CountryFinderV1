@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let tabBarController = CustomTabBarController.instantiate(from: .Main)
         makeRoot(viewController: tabBarController)
+        Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         return true
     }
     

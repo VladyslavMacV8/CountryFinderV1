@@ -14,6 +14,9 @@ protocol DetailCountryViewModelProtocol: class {
     
     func getBorderData() -> SignalProducer<(), ErrorEntity>
     func openBorderCountryiesVC()
+    func isContainsCountry() -> Bool
+    func saveCountryToBD()
+    func deleteCountryFromDB()
 }
 
 class DetailCountryViewModel: GeneralViewModel, DetailCountryViewModelProtocol {
@@ -27,7 +30,7 @@ class DetailCountryViewModel: GeneralViewModel, DetailCountryViewModelProtocol {
                 observer.sendInterrupted()
                 return
             }
-            networkProvider.request(.byCode(codes), completion: { (result) in
+            networkProvider.request(.byCodes(codes), completion: { (result) in
                 processing(observer: observer, result: result, closure: { (json) in
                     guard let arrayJson = json as? [[String: AnyObject]] else { return }
                     self?.borderCountries = Mapper<CountryEntity>().mapArray(JSONArray: arrayJson)
@@ -38,6 +41,19 @@ class DetailCountryViewModel: GeneralViewModel, DetailCountryViewModelProtocol {
     
     func openBorderCountryiesVC() {
         let bordersTitle = "Border countries of " + country.name
-        presenter.openCountriesVC(bordersTitle, borderCountries)
+        presenter.openCountriesVC(bordersTitle, borderCountries, .net)
+    }
+    
+    func isContainsCountry() -> Bool {
+        return isObjectExist(country.flag, CountryEntity.self)
+    }
+    
+    func saveCountryToBD() {
+        saveObject(country)
+    }
+    
+    func deleteCountryFromDB() {
+        deleteObject(CountryEntity.self, country.flag)
+        presenter.popVCAfterDeleteData()
     }
 }

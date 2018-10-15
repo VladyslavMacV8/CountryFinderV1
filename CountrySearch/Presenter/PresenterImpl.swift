@@ -25,17 +25,23 @@ final class PresenterImpl: Presenter {
         router.openAlertViewController(alertViewController: alert)
     }
     
-    func openCountriesVC(_ title: String, _ value: [CountryEntity]) {
+    func openCountriesVC(_ title: String, _ value: [CountryEntity], _ state: CountryVCState) {
         let vc = CountriesViewController.instantiate(from: .Main)
         vc.title = title
         vc.viewModel.countries = value
+        vc.state = state
         router.push(controller: vc, animated: true)
     }
     
-    func openDetailVC(_ value: CountryEntity) {
+    func openDetailVC(_ value: CountryEntity, _ state: CountryVCState) {
         let vc = DetailCountryViewController.instantiate(from: .Main)
         vc.title = value.name
         vc.viewModel.country = value
+        vc.state = state
         router.push(controller: vc, animated: true)
+    }
+    
+    func popVCAfterDeleteData() {
+        router.popController(animated: true)
     }
 }

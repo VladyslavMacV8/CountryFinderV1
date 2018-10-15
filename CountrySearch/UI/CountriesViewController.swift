@@ -7,21 +7,27 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class CountriesViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
     let viewModel: CountriesViewModelProtocol = CountriesViewModel()
+    var state: CountryVCState = .net
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        if state == .db {
+            setupSignals()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,11 +35,28 @@ class CountriesViewController: UIViewController {
         flagImageCache.removeAllObjects()
     }
     
-    private func setup() {
+    private func setupViews() {
         tableView.register(CountriesTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+    }
+    
+    private func setupSignals() {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading countries"
+        hud.show(in: view, animated: true)
+        
+        viewModel.getCountryFromDB().start { [weak self] (event) in
+            hud.dismiss(animated: true)
+            switch event {
+            case .completed:
+                self?.tableView.reloadData()
+            case .interrupted:
+                self?.tableView.reloadData()
+            default: break
+            }
+        }
     }
 }
 
@@ -79,6 +102,6 @@ extension CountriesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.getSelectedCountry(viewModel.countries[indexPath.row])
+        viewModel.getSelectedCountry(viewModel.countries[indexPath.row], state)
     }
 }

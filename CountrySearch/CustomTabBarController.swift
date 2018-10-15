@@ -16,12 +16,17 @@ class CustomTabBarController: UITabBarController {
         let firstNC = CustomNavigationController(rootViewController: MainViewController.instantiate(from: .Main))
         firstNC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0)
         
-        let secondNC = CustomNavigationController(rootViewController: SearchViewController.instantiate(from: .Main))
+        let searchVC = SearchViewController.instantiate(from: .Main)
+        searchVC.title = "Search countries"
+        let secondNC = CustomNavigationController(rootViewController: searchVC)
         secondNC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
-//        let thirdNC = CustomNavigationController(rootViewController: CountriesViewController.instantiate(from: .Main))
-//        thirdNC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 2)
+        let dbVC = CountriesViewController.instantiate(from: .Main)
+        dbVC.state = .db
+        dbVC.title = "Saved countries"
+        let thirdNC = CustomNavigationController(rootViewController: dbVC)
+        thirdNC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 2)
         
-        viewControllers = [firstNC, secondNC]
+        viewControllers = [firstNC, secondNC, thirdNC]
     }
 }

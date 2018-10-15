@@ -25,7 +25,7 @@ class MainViewModel: GeneralViewModel, MainViewModelProtocol {
             networkProvider.request(.byRegion(region.lowercased()), completion: { (result) in
                 processing(observer: observer, result: result, closure: { (json) in
                     guard let arrayJson = json as? [[String: AnyObject]] else { return }
-                    self?.presenter.openCountriesVC(region, Mapper<CountryEntity>().mapArray(JSONArray: arrayJson))
+                    self?.presenter.openCountriesVC(region, Mapper<CountryEntity>().mapArray(JSONArray: arrayJson), .net)
                 })
             })
         }

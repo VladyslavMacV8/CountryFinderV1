@@ -13,6 +13,7 @@ class CountryEntity: Object, StaticMappable {
     @objc dynamic var flag        = ""
     @objc dynamic var name        = ""
     @objc dynamic var nativeName  = ""
+    @objc dynamic var alphaCode   = ""
     var coordinates = [Double]()
     var borders     = [String]()
     var currencies  = [CurrencyCountryEntity]()
@@ -22,6 +23,7 @@ class CountryEntity: Object, StaticMappable {
         flag        <- map[MapperKey.flag]
         name        <- map[MapperKey.name]
         nativeName  <- map[MapperKey.nativeName]
+        alphaCode   <- map[MapperKey.alphaCode]
         coordinates <- map[MapperKey.latlng]
         borders     <- map[MapperKey.borders]
         currencies  <- map[MapperKey.currencies]
@@ -30,6 +32,10 @@ class CountryEntity: Object, StaticMappable {
     
     override class func primaryKey() -> String? {
         return "flag"
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["name", "nativeName", "coordinates", "borders", "currencies", "languages"]
     }
     
     static func objectForMapping(map: Map) -> BaseMappable? {

@@ -13,8 +13,10 @@ class DetailCountryViewController: UIViewController {
     @IBOutlet private weak var headView: UIView!
     @IBOutlet private weak var borderCountriesButton: UIButton!
     
+    private let barButton = UIBarButtonItem()
     private let detailView = DetailCountryView.instanciateFromNib()
     let viewModel: DetailCountryViewModelProtocol = DetailCountryViewModel()
+    var state: CountryVCState = .net
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class DetailCountryViewController: UIViewController {
             case .completed:
                 self?.borderCountriesButton.isEnabled = true
                 self?.addPlaceholder("There are available border countries")
+                self?.setupBarButton()
             case .interrupted:
                 self?.addPlaceholder("There are no border countries")
             default: break
@@ -62,8 +65,31 @@ class DetailCountryViewController: UIViewController {
         label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
+    private func setupBarButton() {
+        barButton.style = .done
+        barButton.target = self
+        barButton.action = #selector(countryAction)
+        
+        if state == .net {
+            barButton.title = "Save"
+            barButton.isEnabled = !viewModel.isContainsCountry()
+        } else {
+            barButton.title = "Delete"
+        }
+        navigationItem.rightBarButtonItem = barButton
+    }
+    
     @objc private func borderCountriesAction() {
         viewModel.openBorderCountryiesVC()
+    }
+    
+    @objc private func countryAction() {
+        if state == .net {
+            viewModel.saveCountryToBD()
+            barButton.isEnabled = !viewModel.isContainsCountry()
+        } else {
+            viewModel.deleteCountryFromDB()
+        }
     }
 }
 

@@ -6,8 +6,7 @@
 //  Copyright © 2018 Vladyslav Kudelia. All rights reserved.
 //
 
-import ReactiveSwift
-import Result
+import WebKit
 
 let flagImageCache = NSCache<NSString, UIImage>()
 
@@ -37,11 +36,22 @@ class CacheFlagImageOperation: AsyncOperation {
     private func asyncLoadData(from url: URL, _ completion: @escaping ((UIImage) -> ())) {
         DispatchQueue.global(qos: .background).async {
             usleep(arc4random_uniform(2 * 1000000))
-            guard let svg = SVGKImage(contentsOf: url)?.uiImage else { return }
+            guard let svg = SVGKImage(contentsOf: url) else { return }
+            guard let image = svg.uiImage else { return }
             DispatchQueue.main.async {
-                completion(svg)
+                completion(image)
             }
         }
+    }
+    
+    func takeScreenshot(_ webView: WKWebView) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: webView.bounds.size.width, height: webView.bounds.size.height)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+        webView.drawHierarchy(in: rect, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return image
     }
 }
 
