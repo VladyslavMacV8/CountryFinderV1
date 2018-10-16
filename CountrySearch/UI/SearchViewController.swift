@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func callSignals() {

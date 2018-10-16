@@ -33,3 +33,8 @@ enum CountryVCState {
     case net
     case db
 }
+
+enum CrashFlag {
+    static let shn = "shn"
+    static let stp = "stp"
+}

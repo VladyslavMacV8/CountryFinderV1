@@ -40,11 +40,11 @@ class DetailCountryViewController: UIViewController {
     
     private func setupSignals() {
         viewModel.getBorderData().start { [weak self] (event) in
+            self?.setupBarButton()
             switch event {
             case .completed:
                 self?.borderCountriesButton.isEnabled = true
                 self?.addPlaceholder("There are available border countries")
-                self?.setupBarButton()
             case .interrupted:
                 self?.addPlaceholder("There are no border countries")
             default: break

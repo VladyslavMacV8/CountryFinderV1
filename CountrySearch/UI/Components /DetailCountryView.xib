@@ -22,7 +22,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UhD-gF-N0Z">
-                    <rect key="frame" x="94.5" y="16" width="213.5" height="16"/>
+                    <rect key="frame" x="94.5" y="15" width="213.5" height="16"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -34,19 +34,19 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="language" translatesAutoresizingMaskIntoConstraints="NO" id="e1Y-uI-80y">
-                    <rect key="frame" x="71" y="42.5" width="18.5" height="18.5"/>
+                    <rect key="frame" x="71" y="45" width="18.5" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="e1Y-uI-80y" secondAttribute="height" id="x0m-4Q-yzk"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-co-d3T">
-                    <rect key="frame" x="94.5" y="44" width="213.5" height="16"/>
+                    <rect key="frame" x="94.5" y="46" width="213.5" height="16"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-A7-uiV">
-                    <rect key="frame" x="25" y="86" width="273" height="126"/>
+                    <rect key="frame" x="25" y="82" width="273" height="130"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -58,16 +58,16 @@
                 <constraint firstItem="e1Y-uI-80y" firstAttribute="leading" secondItem="iMR-Sy-wqh" secondAttribute="leading" id="78Q-FZ-Q4m"/>
                 <constraint firstItem="kt6-7P-Eqs" firstAttribute="width" secondItem="C4i-ZF-FTA" secondAttribute="width" multiplier="1:7" id="7KN-vR-ujd"/>
                 <constraint firstItem="e1Y-uI-80y" firstAttribute="height" secondItem="kt6-7P-Eqs" secondAttribute="height" multiplier="1:2.5" id="A4Q-en-yQg"/>
+                <constraint firstItem="UhD-gF-N0Z" firstAttribute="top" secondItem="iMR-Sy-wqh" secondAttribute="top" id="Abz-Ge-pnf"/>
+                <constraint firstItem="hpy-co-d3T" firstAttribute="top" secondItem="UhD-gF-N0Z" secondAttribute="bottom" constant="15" id="BAQ-2q-fcz"/>
                 <constraint firstItem="201-Mr-WlV" firstAttribute="bottom" secondItem="ju1-A7-uiV" secondAttribute="bottom" constant="25" id="BmV-mu-AdW"/>
                 <constraint firstItem="201-Mr-WlV" firstAttribute="trailing" secondItem="ju1-A7-uiV" secondAttribute="trailing" constant="25" id="GJI-2A-4us"/>
+                <constraint firstItem="ju1-A7-uiV" firstAttribute="top" secondItem="hpy-co-d3T" secondAttribute="bottom" constant="20" id="Mvh-5I-701"/>
                 <constraint firstItem="iMR-Sy-wqh" firstAttribute="leading" secondItem="kt6-7P-Eqs" secondAttribute="trailing" constant="10" id="RcL-cc-fw5"/>
                 <constraint firstItem="201-Mr-WlV" firstAttribute="trailing" secondItem="UhD-gF-N0Z" secondAttribute="trailing" constant="15" id="Rwi-uu-ED9"/>
                 <constraint firstItem="kt6-7P-Eqs" firstAttribute="top" secondItem="201-Mr-WlV" secondAttribute="top" constant="15" id="Syk-fX-zlH"/>
-                <constraint firstItem="ju1-A7-uiV" firstAttribute="top" secondItem="kt6-7P-Eqs" secondAttribute="bottom" constant="25" id="UJl-U3-2zK"/>
                 <constraint firstItem="hpy-co-d3T" firstAttribute="centerY" secondItem="e1Y-uI-80y" secondAttribute="centerY" id="YrL-Rz-eH4"/>
                 <constraint firstItem="ju1-A7-uiV" firstAttribute="leading" secondItem="201-Mr-WlV" secondAttribute="leading" constant="25" id="hVS-Qy-PM5"/>
-                <constraint firstItem="UhD-gF-N0Z" firstAttribute="centerY" secondItem="iMR-Sy-wqh" secondAttribute="centerY" id="phV-xw-4Uf"/>
-                <constraint firstItem="e1Y-uI-80y" firstAttribute="bottom" secondItem="kt6-7P-Eqs" secondAttribute="bottom" id="tyk-Xs-HEE"/>
                 <constraint firstItem="iMR-Sy-wqh" firstAttribute="height" secondItem="kt6-7P-Eqs" secondAttribute="height" multiplier="1:2.5" id="w6w-G0-wfT"/>
                 <constraint firstItem="201-Mr-WlV" firstAttribute="trailing" secondItem="hpy-co-d3T" secondAttribute="trailing" constant="15" id="zHS-sd-O2a"/>
             </constraints>

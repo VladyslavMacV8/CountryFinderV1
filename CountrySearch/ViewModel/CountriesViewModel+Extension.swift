@@ -6,8 +6,6 @@
 //  Copyright © 2018 Vladyslav Kudelia. All rights reserved.
 //
 
-import WebKit
-
 let flagImageCache = NSCache<NSString, UIImage>()
 
 class CacheFlagImageOperation: AsyncOperation {
@@ -23,6 +21,14 @@ class CacheFlagImageOperation: AsyncOperation {
     override func main() {
         if isCancelled { return }
         
+        if urlString.contains(CrashFlag.shn) {
+            completion?(UIImage(named: CrashFlag.shn))
+            return
+        } else if urlString.contains(CrashFlag.stp) {
+            completion?(UIImage(named: CrashFlag.stp))
+            return
+        }
+        
         guard let url = URL(string: urlString) else { return }
         asyncLoadData(from: url) { [weak self] (image) in
             guard let `self` = self else { return }
@@ -35,23 +41,14 @@ class CacheFlagImageOperation: AsyncOperation {
     
     private func asyncLoadData(from url: URL, _ completion: @escaping ((UIImage) -> ())) {
         DispatchQueue.global(qos: .background).async {
-            usleep(arc4random_uniform(2 * 1000000))
+            usleep(arc4random_uniform(2))
             guard let svg = SVGKImage(contentsOf: url) else { return }
+            svg.size = CGSize(width: 80, height: 50)
             guard let image = svg.uiImage else { return }
             DispatchQueue.main.async {
                 completion(image)
             }
         }
-    }
-    
-    func takeScreenshot(_ webView: WKWebView) -> UIImage? {
-        let rect = CGRect(x: 0, y: 0, width: webView.bounds.size.width, height: webView.bounds.size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
-        webView.drawHierarchy(in: rect, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return image
     }
 }
 
